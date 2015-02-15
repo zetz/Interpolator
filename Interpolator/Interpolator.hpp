@@ -138,4 +138,35 @@ namespace Interpolator {
         return InOutFunc<F>(func);
     }
     
+    
+    template<class T>
+    struct CatmulRom : public type_tag<T> {
+        T operator() (float t, const T& t0, const T& v0, const T& v1, const T& t1) {
+            /*
+                                            [  0  2  0  0 ]   [t0]
+             q(t) = 0.5 * (1, t, tt, ttt) * [ -1  0  1  0 ] * [v0]
+                                            [  2 -5  4  0 ]   [v1]
+                                            [ -1  3 -3  1 ]   [t0]
+             */
+            return t0;
+        }
+    };
+    
+    
+    template<class T>
+    struct Bezier : public type_tag<T> {
+        T operator() (float t, const T& t0, const T& v0, const T& v1, const T& t1) {
+            /*
+                                            [ -1  3 -3  1 ]   [t0]
+             q(t) = 0.5 * (1, t, tt, ttt) * [  3 -6  3  0 ] * [v0]
+                                            [ -3 -3  0  0 ]   [v1]
+                                            [  1  0  0  0 ]   [t0]
+             
+             */
+            
+            return t0;
+        }
+    };
+    
+    
 } // Interpolator

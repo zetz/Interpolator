@@ -15,6 +15,12 @@ int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, World!\n";
     
+    
+    // node by node
+    //
+    PatchSpline<float> spline;
+    
+    
     using namespace Interpolator;
     
     Sine<uint> quad;
